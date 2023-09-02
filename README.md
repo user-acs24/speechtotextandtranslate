@@ -57,4 +57,4 @@ Thank you for using the Speech to Text App.
 If you encounter any issues or have suggestions for improvements, please feel free to open an issue. I appreciate your feedback!
 
 Thank you
-#Nirdhum
+# Nirdhum
