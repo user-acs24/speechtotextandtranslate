@@ -25,17 +25,9 @@ git clone https://github.com/nirdhum/speech-recognition-app
 
 2. Navigate to the project directory:
 
-3. Install the project dependencies using npm or yarn:
+3. Install the project dependencies using npm or yarn: <b>npm install</b> or <b>yarn install</b>
 
-npm install
-### or
-yarn install
-
-4. Start the development server:
-
-npm run dev
-### or
-yarn dev
+4. Start the development server: <b>npm run dev</b> or <b>yarn dev</b>
 
 5. Open your browser and go to http://localhost:3000 to view the app.
 
