@@ -3,19 +3,25 @@
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  gap: 5rem;
+  gap: 2.8rem;
   width: 90vw;
+}
+
+.container h1 {
+  font-size: 2.8rem;
+  font-weight: 800;
+  letter-spacing: 1px;
 }
 
 .mainContent {
   max-width: 50rem;
   width: 100%;
-  min-height: 400px;
+  min-height: 40rem;
   height: auto;
-  padding: 18px 18px 120px 18px;
+  padding: 1.8rem 1.8rem 12rem;
   position: relative;
   resize: none;
-  box-shadow: 0 12px 48px 0px rgb(109 117 141 / 20%);
+  box-shadow: 0px 10px 15px -3px rgba(0, 0, 0, 0.1);
   background: rgb(255 255 255);
   border-radius: 5px;
 }
@@ -23,4 +29,28 @@
 .mainContent:focus {
   border: 0.3px solid rgb(43, 45, 56, 0.3);
   outline: none;
+}
+
+.btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+}
+
+button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  padding: 1rem 3rem;
+  border: none;
+  background: indianred;
+  color: aliceblue;
+  font-size: 2rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  border-radius: 5px;
+  cursor: pointer;
+  box-shadow: 0px 5px 15px 1px rgba(0, 0, 0, 0.2);
 }

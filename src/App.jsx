@@ -1,18 +1,21 @@
 // import { useState } from 'react'
 import styles from './app.module.css'
 // import React from 'react'
+import { BiSolidCopyAlt } from "react-icons/bi";
+import { BsFillMicFill } from "react-icons/bs";
+import { BsFillMicMuteFill } from "react-icons/bs";
 
 function App() {
 
   return (
     <>
       <div className={styles.container}>
-        <h2>Speech to Text Converter</h2>
+        <h1>Speech to Text Converter</h1>
         <div className={styles.mainContent}></div>
         <div className={styles.btn}>
-          <button>Copy</button>
-          <button>Start</button>
-          <button>Stop</button>
+          <button><BiSolidCopyAlt />Copy</button>
+          <button><BsFillMicFill />Start</button>
+          <button><BsFillMicMuteFill />Stop</button>
         </div>
       </div>
     </>
