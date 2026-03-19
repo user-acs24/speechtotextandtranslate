@@ -1,0 +1,127 @@
+Your Environment (from your screenshot)
+
+Apache Version: 2.4.41 (Ubuntu)
+
+Modules present:
+
+php7_module ✅
+
+mpm_prefork_module ✅
+
+status_module ✅
+
+Modules NOT present:
+
+rewrite_module ❌
+
+proxy_* ❌
+
+👉 This is VERY important for CVE applicability.
+
+🔥 Relevant CVEs for Apache 2.4.41
+✅ 1. CVE-2020-13950 / CVE-2020-13956
+Type:
+
+HTTP Request Smuggling / DoS
+
+Requires:
+
+Core HTTP parsing (always present)
+
+Your status:
+
+✔ EXPLOITABLE & DEMONSTRATED
+
+👉 Burp request with:
+
+Content-Length + Transfer-Encoding
+⚠️ 2. CVE-2021-30641
+Type:
+
+Path normalization bypass
+
+Requires:
+
+Misconfigured access control
+
+Your status:
+
+⚠️ TESTED but NOT exploitable
+
+👉 /server-status still 403
+
+⚠️ 3. CVE-2021-26691
+Type:
+
+mod_session DoS
+
+Requires:
+
+session handling
+
+Your status:
+
+⚠️ Possible but not needed (risky to demo)
+
+❌ 4. CVE-2020-1927
+Type:
+
+Open Redirect (mod_rewrite)
+
+Requires:
+
+mod_rewrite
+
+Your system:
+apache2ctl -M | grep rewrite
+→ (no output)
+
+👉 ❌ NOT EXPLOITABLE
+
+❌ 5. CVE-2020-11984
+Type:
+
+RCE (mod_proxy_uwsgi)
+
+Requires:
+
+mod_proxy_uwsgi
+
+👉 ❌ Not present → NOT applicable
+
+❌ 6. CVE-2019-0211
+Type:
+
+Privilege escalation
+
+Requires:
+
+Apache < 2.4.38
+
+👉 ❌ Version mismatch
+
+🎯 NON-CVE but IMPORTANT finding (YOU HAVE THIS)
+🔥 server-status exposure
+Type:
+
+Information Disclosure
+
+Evidence:
+curl http://127.0.0.1/server-status
+
+👉 You saw:
+
+server version
+
+requests
+
+worker info
+
+🧾 Final Clean Table (use this in report)
+CVE	Type	Status
+CVE-2020-13950	Request Smuggling / DoS	✅ Exploited
+CVE-2021-30641	Path bypass	⚠️ Not exploitable
+CVE-2021-26691	DoS	⚠️ Not tested
+CVE-2020-1927	Open Redirect	❌ Not applicable
+CVE-2020-11984	RCE	❌ Not applicable
+CVE-2019-0211	Priv Esc	❌ Not applicable
