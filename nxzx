@@ -1,0 +1,92 @@
+1. mod_status (status_module)
+⚠️ No major direct RCE CVEs for 2.4.41
+
+But:
+
+✅ CVE-2018-1312
+Type: Information disclosure / DoS edge case
+Affects: mod_status with scoreboard handling
+Impact:
+Potential crash or info leak under load
+⚠️ Real-world issue (more important than CVE)
+/server-status exposed
+
+👉 Not a CVE but very commonly exploited:
+
+http://target/server-status
+
+➡️ Leaks:
+
+Internal IPs
+Requests
+Server activity
+🔥 2. mod_alias (alias_module)
+✅ CVE-2021-40438
+SSRF via crafted request (mod_proxy + mod_alias interaction)
+Even if proxy not enabled, alias misconfig matters
+⚠️ Misconfiguration (VERY COMMON)
+Alias /images/ "/var/www/"
+
+➡️ Can lead to:
+
+Path traversal
+Sensitive file exposure
+
+👉 No CVE needed — still exploitable
+
+🔥 3. authz_* modules
+
+(authz_core, authz_host, authz_user)
+
+✅ CVE-2021-34798
+Authorization bypass under specific conditions
+Impact:
+Access control mis-evaluation
+✅ CVE-2017-3167
+Improper authentication checks
+Can allow bypass of restrictions
+⚠️ Misconfig example:
+Require all granted
+
+➡️ Completely bypasses protection
+
+🔥 4. php7_module (mod_php)
+
+This is your strongest attack surface
+
+✅ CVE-2019-11043
+PHP-FPM RCE (if used)
+Not strictly mod_php but relevant
+✅ CVE-2020-7069
+Use-after-free → possible RCE
+✅ CVE-2018-20783
+LFI → RCE via phar://
+⚠️ Real-world (MOST IMPORTANT)
+
+Not CVE — but:
+
+File upload → RCE
+LFI → log poisoning
+Command injection
+🎯 Clean Mapping Table
+Module	CVE	Type	Exploitability
+mod_status	CVE-2018-1312	Info leak / DoS	⚠️ Low
+mod_alias	CVE-2021-40438	SSRF	⚠️ Medium
+authz_*	CVE-2021-34798	Auth bypass	🔥 Medium
+authz_*	CVE-2017-3167	Auth bypass	🔥 Medium
+php7_module	CVE-2020-7069	Memory corruption	⚠️ Hard
+php7_module	CVE-2018-20783	LFI → RCE	🔥 Good
+🧠 What Actually Matters (Exam / Lab Reality)
+
+👉 In your setup:
+
+❌ No mod_rewrite
+❌ No mod_proxy
+❌ No easy Apache RCE CVE
+
+👉 So focus on:
+
+🔥 REAL attack path:
+PHP vulnerability (LFI / upload)
+Misconfigured alias
+Open /server-status
